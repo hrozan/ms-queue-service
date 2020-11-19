@@ -1,1 +1,3 @@
-# michael-scott-queue-service
+# Michael Scott Queue Service
+
+![Michael Scott](./docs/img/ms-logo.jpg)
