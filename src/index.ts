@@ -1,3 +1,3 @@
-export class MichaelScottQueueService {
+import { createMSQSServer } from "./server"
 
-}
+createMSQSServer(4040)

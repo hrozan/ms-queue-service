@@ -2,7 +2,7 @@
   "name": "michael-scott-queue-service",
   "version": "1.0.0",
   "description": "Queue Service",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/index.ts",
