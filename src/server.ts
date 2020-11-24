@@ -1,22 +1,22 @@
-import { createServer } from "net"
+const http = require('http');
+const io = require('socket.io');
 
-export const createMSQSServer = (port: number) => {
-  const server = createServer((c) => {
-    console.log("client connected")
-    c.on("end", () => {
-      console.log("client disconnected")
-    })
-    c.write("hello\r\n")
-    c.pipe(c)
-  })
+export const createServer = (port: number) => {
+  const server = http.createServer();
 
-  server.on("error", (err) => {
-    throw err
-  })
+  // Graceful Shutdown
+  const shutdown = () => {
+    server.close();
+  }
+  process.on('SIGTERM', async () => await server.close())
+  process.on('SIGINT', async () => await server.close())
 
-  return server.listen(port, () => {
-    console.log("server bound")
-  })
+  server.on('error', (err: any) => {
+    throw err;
+  });
 
+  server.listen(port, () => {
+    console.log('Server is running...');
+  });
 }
 
