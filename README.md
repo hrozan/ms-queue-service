@@ -8,3 +8,13 @@ The Micheal Scott Queue Service is a simple queue service for web application, m
 ![Michael Scott](./docs/img/logo.jpg)
 
 > “Sometimes I’ll start a sentence and I don’t even know where it’s going. I just hope I find it along the way.” – **Michael Scott**
+
+## :rocket: Getting Started
+
+[Server](./server/README.md)
+
+[Dashboard](dash/README.md)
+
+### :page_facing_up: License
+
+This project is licensed under the terms of the [MIT license](/LICENSE)

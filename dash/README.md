@@ -1,34 +1,21 @@
-# dash
+# Getting Started
 
-## Project setup
-```
-npm install
-```
+```bash
+# Install dependencies
+npm i
 
-### Compiles and hot-reloads for development
-```
+# Run development server
+npm start # or 
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+# Build
 npm run build
-```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+# Run test 
+npm test
+npm run test:unit # just unit test
+npm run test:e2e # just e2e test
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
+# Run linter
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
