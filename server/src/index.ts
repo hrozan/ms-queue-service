@@ -1,3 +1,3 @@
 import { createMSQSServer } from "./server"
 
-createMSQSServer(5000);
+createMSQSServer(5000)

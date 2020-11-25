@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/index.ts",
-    "build": "tsc src/index.ts"
+    "build": "tsc src/index.ts",
+    "prettier": "prettier --write src/**/*"
   },
   "repository": {
     "type": "git",
