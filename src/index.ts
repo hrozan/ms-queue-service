@@ -1,3 +1,3 @@
-import { createServer } from "./server"
+import { createMSQSServer } from "./server"
 
-createServer(5000)
+createMSQSServer(5000);

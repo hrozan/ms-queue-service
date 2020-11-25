@@ -1,13 +1,11 @@
-const http = require('http');
-const io = require('socket.io');
+import { createServer } from 'http';
+import { Socket } from 'socket.io';
 
-export const createServer = (port: number) => {
-  const server = http.createServer();
+export const createMSQSServer = (port: number) => {
+  const server = createServer();
+  const io = require('socket.io')(server);
 
-  // Graceful Shutdown
-  const shutdown = () => {
-    server.close();
-  }
+  /** Graceful Shutdown */
   process.on('SIGTERM', async () => await server.close())
   process.on('SIGINT', async () => await server.close())
 
@@ -18,5 +16,14 @@ export const createServer = (port: number) => {
   server.listen(port, () => {
     console.log('Server is running...');
   });
+
+  io.on('connection', (socket: Socket) => {
+    console.log(socket.connected);
+
+  })
+
+  setTimeout(() => {
+    io.emit('connection', { alo: 'alo' });
+  }, 1000);
 }
 
