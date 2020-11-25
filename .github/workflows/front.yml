@@ -18,7 +18,6 @@ jobs:
         run: |
           cd dash/
           npm i
-          npm run test:unit
-          npm run test:e2e
+          npm  test
         env:
           CI: true
