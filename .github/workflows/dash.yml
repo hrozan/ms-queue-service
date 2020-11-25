@@ -1,4 +1,4 @@
-name: Front
+name: Dash 
 
 on:
   push:
@@ -18,6 +18,6 @@ jobs:
         run: |
           cd dash/
           npm i
-          npm  test
+          npm test
         env:
           CI: true

@@ -4,6 +4,7 @@
   "description": "Queue Service",
   "main": "src/server.ts",
   "scripts": {
+    "start": "npm run dev",
     "test": "jest",
     "dev": "nodemon src/index.ts",
     "build": "tsc src/index.ts",
