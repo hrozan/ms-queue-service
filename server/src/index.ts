@@ -1,5 +1,10 @@
+import Debug from "debug"
 import { createMSQSServer } from "./server"
 
-createMSQSServer(5000).then(() => {
-  console.log("Connected ...")
+const debug = Debug("msqs:index")
+
+const port = parseInt(process.env.PORT || "2307")
+
+createMSQSServer({ port }).then(() => {
+  debug("🚀 started")
 })
