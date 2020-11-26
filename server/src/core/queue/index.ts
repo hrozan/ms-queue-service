@@ -8,8 +8,4 @@ export class Queue {
   enqueue(item: object) {
     this.items.push(item)
   }
-
-  dequeue() {}
-
-  isEmpty() {}
 }
