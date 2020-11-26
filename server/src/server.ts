@@ -1,6 +1,6 @@
 import Debug from "debug"
 import { createServer, Server as HttpServer } from "http"
-import { Server } from "socket.io"
+import { Server, Socket } from "socket.io"
 
 const debug = Debug("msqs:server")
 
@@ -26,6 +26,10 @@ export const createMSQSServer = (config: MSQSServerConfig): Promise<MSQSServer> 
 
       httpServer.on("error", (err: Error) => {
         reject(err)
+      })
+
+      io.on("connection", (socket: Socket) => {
+        debug("message received", { code: socket.request.statusCode })
       })
 
       httpServer.listen(config.port, () => {
