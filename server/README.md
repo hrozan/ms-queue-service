@@ -5,7 +5,6 @@
 npm i
 
 # Run devlopment server
-npm start # or
 npm run dev
 
 # Run build
