@@ -6,6 +6,12 @@ export class Queue {
   }
 
   enqueue(item: object) {
-    this.items.push(item)
+    this.items = [...this.items, item]
+  }
+
+  dequeue() {
+    const [item, ...rest] = this.items
+    this.items = rest
+    return item
   }
 }
