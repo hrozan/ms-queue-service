@@ -1,3 +1,5 @@
 import { createMSQSClient } from "./client"
 
-createMSQSClient()
+createMSQSClient().then(() => {
+  console.log("client running")
+})
