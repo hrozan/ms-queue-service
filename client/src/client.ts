@@ -6,7 +6,7 @@ export class MSQSClient {
     constructor(socket: Socket) {
         this.socket = socket
         this.socket.on("connection", this.onConnection)
-        // socket.emit('send-message', { message: 'test', queue: 'a1' });
+        socket.emit('send-message', { message: 'test', queue: 'a1' });
     }
 
     onConnection() {
