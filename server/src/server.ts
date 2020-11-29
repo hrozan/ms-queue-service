@@ -27,6 +27,10 @@ export class MSQSServer {
   private onConnection() {
     this.io.on("connection", (socket: Socket) => {
       debug("message received", { code: socket.request.statusCode })
+
+      socket.on('send-message', (message: Object) => {
+        console.log(message)
+      });
     })
   }
 
