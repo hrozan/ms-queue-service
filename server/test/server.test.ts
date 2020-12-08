@@ -1,4 +1,4 @@
-import { createMSQSServer, MSQSServer } from "../src/server"
+import { startMSQSServer, MSQSServer } from "../src/server"
 
 describe("MSQSServer", () => {
   let server: MSQSServer
@@ -10,8 +10,8 @@ describe("MSQSServer", () => {
   })
 
   it("should create a server", async () => {
-    server = await createMSQSServer({ port: 2307 })
+    server = await startMSQSServer({ port: 2307 })
 
-    expect(server.isHttpServerListening()).toBeTruthy()
+    expect(server.httpServer.listening).toBeTruthy()
   })
 })
