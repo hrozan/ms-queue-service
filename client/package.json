@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "test": "jest",
-    "dev": "nodemon src/index.ts",
+    "dev": "DEBUG=msqs:* nodemon src/index.ts",
     "build": "tsc",
     "prettier": "prettier --write src/**/*"
   },
