@@ -37,7 +37,7 @@ export const startMSQSServer = (config: MSQSServerConfig): Promise<MSQSServer> =
       const server: MSQSServer = {
         httpServer,
         io,
-        close,
+        close
       }
 
       const onMessageReceived = (payload: Object) => {
@@ -45,8 +45,14 @@ export const startMSQSServer = (config: MSQSServerConfig): Promise<MSQSServer> =
         queue.enqueue(payload)
       }
 
+      const onMessageConsume = () => {
+        const payload = queue.dequeue()
+        io.emit("return-consume-message", payload)
+      }
+
       io.on("connection", (socket: Socket) => {
         socket.on("send-message", onMessageReceived)
+        socket.on("consume-message", onMessageConsume)
       })
 
       httpServer.on("error", (err) => reject(err))
