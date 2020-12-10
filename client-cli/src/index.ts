@@ -1,5 +1,14 @@
 import { createMSQSClient } from "./client"
 
-createMSQSClient().then(() => {
-  console.log("client running")
-})
+const main = async () => {
+  const client = await createMSQSClient()
+  client.sendMessage({ message: "hello" })
+  client.sendMessage({ message: "hello" })
+  client.sendMessage({ message: "hello" })
+
+  const payload = await client.consume()
+
+  console.log(payload)
+}
+
+main().catch(e => console.log(e))
