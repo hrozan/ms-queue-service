@@ -1,23 +1,45 @@
-import { io, Socket } from "socket.io-client"
+import Debug from "debug"
+import { io } from "socket.io-client"
 
-export class MSQSClient {
-    private socket: Socket
+const debug = Debug("msqs:client")
 
-    constructor(socket: Socket) {
-        this.socket = socket
-        this.socket.on("connection", this.onConnection)
-        socket.emit('send-message', { message: 'test', queue: 'a1' });
-    }
-
-    onConnection() {
-        console.log("client connected")
-    }
+export type MSQSClient = {
+  sendMessage: (payload: any) => void
+  consume: () => Promise<object>
 }
 
-export const createMSQSClient = () =>
-    new Promise((resolve) => {
-        const socket = io("http://localhost:2307")
-        socket.connect()
-        console.log(socket.connected)
-        resolve(new MSQSClient(socket))
+export const createMSQSClient = (connectionString?: string): Promise<MSQSClient> =>
+  new Promise((resolve) => {
+    const socket = io(connectionString || "http://localhost:2307")
+    socket.connect()
+
+    // Events
+    socket.on("connection", () => {
+      debug("client connected")
     })
+
+    // Methods
+    const sendMessage = (payload: any) => {
+      debug(`sending message`)
+      socket.emit("send-message", payload)
+    }
+
+    const consume = (): Promise<Object> =>
+      new Promise((resolve, reject) => {
+        debug("consume message")
+        socket.emit("consume-message")
+
+        socket.on("return-consume-message", (payload: Object) => {
+          debug("message return")
+          resolve(payload)
+        })
+
+        setTimeout(() => reject(), 5000)
+      })
+
+    const client: MSQSClient = {
+      sendMessage,
+      consume,
+    }
+    resolve(client)
+  })
