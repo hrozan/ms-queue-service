@@ -16,9 +16,8 @@ jobs:
           node-version: 14.x
       - name: Install and Test
         run: |
-          cd dash/
           npm i
-          npm run build
-          npm test
+          npm run bootstrap
+          npm run test:dash
         env:
           CI: true

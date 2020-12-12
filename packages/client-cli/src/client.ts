@@ -1,5 +1,6 @@
 import Debug from "debug"
 import { io } from "socket.io-client"
+import { Events } from "@msqs/core"
 
 const debug = Debug("msqs:client")
 
@@ -21,13 +22,13 @@ export const createMSQSClient = (connectionString?: string): Promise<MSQSClient>
     // Methods
     const sendMessage = (payload: any) => {
       debug(`sending message`)
-      socket.emit("send-message", payload)
+      socket.emit(Events.Send, payload)
     }
 
     const consume = (): Promise<Object> =>
       new Promise((resolve, reject) => {
         debug("consume message")
-        socket.emit("consume-message")
+        socket.emit(Events.Consume)
 
         socket.on("return-consume-message", (payload: Object) => {
           debug("message return")
