@@ -8,6 +8,9 @@ import App from './components/App';
 
 import './css/index.css';
 
+import { fetchTodos } from './features/todos/todosSlice';
+store.dispatch(fetchTodos)
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

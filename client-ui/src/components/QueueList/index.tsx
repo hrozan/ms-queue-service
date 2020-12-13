@@ -31,6 +31,27 @@ interface Props {
 	setQueues: Function,
 }
 
+const queues = [
+	{
+		id: '123125', name: 'task-management-1', tasks: [
+			{
+				id: '1123123',
+				payload: { 'abc': 123 },
+				timestamp: 1111111
+			}
+		]
+	},
+	{
+		id: '412421', name: 'task-management-2', tasks: [
+			{
+				id: '1123123',
+				payload: 12312,
+				timestamp: 1111111
+			}
+		]
+	},
+];
+
 const QueuesList = (props: Props) => {
 
 	const {
@@ -39,27 +60,6 @@ const QueuesList = (props: Props) => {
 	} = props;
 
 	useEffect(() => {
-
-		const queues = [
-			{
-				id: '123125', name: 'task-management-1', tasks: [
-					{
-						id: '1123123',
-						payload: { 'abc': 123 },
-						timestamp: 1111111
-					}
-				]
-			},
-			{
-				id: '412421', name: 'task-management-2', tasks: [
-					{
-						id: '1123123',
-						payload: 12312,
-						timestamp: 1111111
-					}
-				]
-			},
-		];
 
 		console.log('Get queues');
 		setQueues(queues);
@@ -89,7 +89,7 @@ const QueuesList = (props: Props) => {
 	}
 
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer component={Paper} square>
 			<Table size="small" aria-label="a dense table">
 				<TableHead>
 					<TableRow>

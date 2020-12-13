@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import QueueList from './QueueList';
 import '../css/App.css';
 
-// interface IProps {
-//   states: IAppState;
-//   actions: IAppProps;
-// }
+import { Typography } from '@material-ui/core';
+
 
 function App(props: any) {
 
@@ -18,10 +16,14 @@ function App(props: any) {
   return (
     <div className="App">
       <header className="App-header">
-        <h3>Little pretty keyboard 2009</h3>
+        <Typography variant="h3">
+          Michael Scott Queue Service
+        </Typography>
       </header>
       <main>
-        {storedTitle}
+        <Typography gutterBottom>
+          {storedTitle}
+        </Typography>
         <QueueList />
       </main>
     </div>
