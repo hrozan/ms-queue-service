@@ -1,3 +1,4 @@
+---
 name: New Feature
 description: File a bug report
 title: "[Feat]: "
@@ -14,5 +15,5 @@ body:
       label: Point
       description: What is the effort for this new feat
     validation:
-      required: true  
-          
+      required: true 
+---
